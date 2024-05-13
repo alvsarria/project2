@@ -15,6 +15,7 @@
     color: rgb(117, 117, 117);
     border-bottom: 1px solid #e6e6e6;
     transition: 300ms;
+    height: 10vh;
 
     .logo-slogan {
         width: 15%;
@@ -26,7 +27,7 @@
     }
 
     li {
-        margin-left: 50px;
+        margin-left: 70px;
         height: 100%;
         /* transition: 300ms; */
     }
