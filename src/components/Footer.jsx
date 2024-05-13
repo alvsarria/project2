@@ -4,6 +4,7 @@ import instagram from "../assets/images/instagram.png"
 import linkedin from "../assets/images/linkedin.png"
 import youtube from "../assets/images/youtube.png"
 import github from "../assets/images/github.png"
+import logo_slogan from "../assets/images/logo_slogan.png"
 
 const date = new Date();
 
@@ -12,11 +13,7 @@ const Footer = () => {
         <div className="footer">
             <div className="footer-major1">
                 <div className="footer-minor1">
-                    <p className="medievalfont">Wordsmith Retreat</p>
-                    <div className="footer-minor11">
-                        <p>privacy</p>
-                        <p>policy</p>
-                    </div>
+                    <img className="logo-slogan" src={logo_slogan} alt="logo image" />
                 </div>
                 <div className="footer-minor2">
                     <div className="footer-minor21">
