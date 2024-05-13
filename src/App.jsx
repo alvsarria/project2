@@ -1,10 +1,18 @@
-import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
+import supabase from './utils/config.js'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const handleButton = async () => {
+    const { data, error } = await supabase.from("favorites").select();
+    if (error) {
+      console.log("Error creating the user: ", error);
+      return;
+    } else {
+      console.log(data);
+    }
+  };
 
   return (
     <>
@@ -18,8 +26,8 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+        <button onClick={handleButton}>
+          Click to console log data from DB
         </button>
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
