@@ -1,5 +1,4 @@
 import axios from 'axios';
-import supabase from '../utils/config.js'
 import logo_books from "../assets/images/logo_books.png"
 import "../styles/pages/HomePage.css"
 import { useState } from 'react';
@@ -36,7 +35,6 @@ const HomePage = () => {
                         <input className="searchinput" type="text" name="genreSearch" placeholder="Genre" />
                         <input className="searchinput" type="text" name="authorSearch" placeholder="Author" />
                         <button className="searchButton" onClick={handleSubmit}>Search</button>
-                        {/* DIY */}
                     </div>
                 </div>
             </div>
