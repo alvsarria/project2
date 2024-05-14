@@ -1,0 +1,78 @@
+.allbookspage {
+    width: 100vw;
+    background-image: url("../../assets/images/background.jpg");
+    background-size: cover;
+    height: 90vh;
+    overflow-y: scroll;
+}
+
+.bookshelf {
+    padding: 50px 100px 50px 100px;
+    /* height: 90vh; */
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    flex-wrap: wrap;
+}
+
+.bookpic {
+    width: 150px;
+    transition: 300ms;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.bookcard {
+    width: 230px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.bookmark {
+    position: absolute;
+    width: 30px;
+    top: 0px;
+    left: 0px;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.book {
+    width: 150px;
+    display: flex;
+    align-items: end;
+    position: relative;
+    transition: 300ms;
+    filter: drop-shadow(10px 0px 10px #000000);
+}
+
+.book:hover {
+    transform: translateY(5px) scale(1.05);
+    filter: drop-shadow(10.5px 0px 10px #000000);
+}
+
+.shelf {
+    width: 100%;
+    height: 20px;
+    background-image: url("../../assets/images/wood_background.jpg");
+    background-size: cover;
+}
+
+.book-container {
+    height: 250px;
+    display: flex;
+    align-items: end;
+}
+
+.details-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50vw;
+    height: 50vh;
+    background-color: white;
+    visibility: hidden;
+}
