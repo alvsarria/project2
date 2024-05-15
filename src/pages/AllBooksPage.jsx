@@ -7,12 +7,12 @@ import bookmark_active from "../assets/images/bookmark_active.png"
 const AllBooksPage = () => {
     const [arrayBooks, setArrayBooks] = useState([]);
     const [bookmarkState, setBookmarkState] = useState(false);
+    const [bookDetail, setBookDetail] = useState({});
 
     const fetchData = async () => {
         const { data, error } = await supabase
             .from("books")
             .select()
-            // .order("favorite", { ascending: false })
             .order("id", { ascending: false })
             .limit(50);
         if (error) {
@@ -24,17 +24,14 @@ const AllBooksPage = () => {
         }
     };
 
-    const displayDetailsModal = () => {
+    const displayDetailsModal = (book) => {
+        setBookDetail(book);
         document.querySelector(".details-modal").style.visibility = "visible";
-        document.querySelector(".footer").style.filter = "blur(10px)";
-        document.querySelector(".header").style.filter = "blur(10px)";
         document.querySelector(".bookshelf").style.filter = "blur(10px)";
     }
 
     const hideDetailsModal = () => {
         document.querySelector(".details-modal").style.visibility = "hidden";
-        document.querySelector(".footer").style.filter = "none";
-        document.querySelector(".header").style.filter = "none";
         document.querySelector(".bookshelf").style.filter = "none";
     }
 
@@ -66,7 +63,7 @@ const AllBooksPage = () => {
     }, [bookmarkState]);
 
     return (
-        <div className="allbookspage">
+        <div className="allbookspage" >
             <div className="bookshelf">
                 {
                     arrayBooks.map(book => {
@@ -75,7 +72,7 @@ const AllBooksPage = () => {
                                 <div className="book-container">
                                     <div className="book">
                                         <img src={book.favorite ? bookmark_active : bookmark_inactive} alt="bookmark icon" className="bookmark" onClick={() => favoriteAddRemove(book)} />
-                                        <img src={book.image} alt="book picture" className="bookpic" onClick={displayDetailsModal} />
+                                        <img src={book.image} alt="book picture" className="bookpic" onClick={() => displayDetailsModal(book)} />
                                     </div>
                                 </div>
                                 <div className="shelf"></div>
@@ -85,6 +82,17 @@ const AllBooksPage = () => {
                 }
             </div>
             <div className="details-modal" onClick={hideDetailsModal}>
+                <img src={bookDetail.image} alt="book detail image" />
+                <div className="details-info-container">
+                    <h3>{bookDetail.title}</h3>
+                    <h4>{bookDetail.author === undefined ? "Unknown" : (bookDetail.author.length === 0 ? "Unknown" : bookDetail.author[0])}</h4>
+                    <h4>{bookDetail.subjects === undefined ? "Unknown" : (bookDetail.subjects.length === 0 ? "Unknown" : bookDetail.subjects[0])}</h4>
+                    <h5>{bookDetail.isbn13}</h5>
+                    <h5>{bookDetail.publisher}</h5>
+                    <h5>{bookDetail.date_published}</h5>
+                    <h5>{bookDetail.pages}</h5>
+                    <p>{bookDetail.synopsis}</p>
+                </div>
             </div>
         </div>
     )
