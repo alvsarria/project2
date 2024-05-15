@@ -6,7 +6,7 @@
     overflow-y: scroll;
 }
 
-.bookshelf {
+.bookshelf-allbooks {
     padding: 50px 100px 50px 100px;
     /* height: 90vh; */
     display: flex;
@@ -75,4 +75,16 @@
     height: 50vh;
     background-color: white;
     visibility: hidden;
+    display: flex;
+
+    img {
+        width: 100px;
+        height: fit-content;
+
+    }
+}
+
+.details-info-container{
+    display: flex;
+    flex-direction: column;
 }
