@@ -41,7 +41,7 @@ const FavoritesPage = () => {
                         })
                     }
                 </div>
-                {showFavoriteModal && <DetailsBook bookDetail={favBookDetail} showModal={showFavoriteModal} setShowModal={setShowFavoriteModal} />}
+                {showFavoriteModal && <DetailsBook bookDetail={favBookDetail} showModal={showFavoriteModal} setShowModal={setShowFavoriteModal} fetchData={fetchDataFavorites} />}
             </div>
         )
     } else {
