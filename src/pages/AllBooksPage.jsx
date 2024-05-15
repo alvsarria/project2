@@ -26,10 +26,16 @@ const AllBooksPage = () => {
 
     const displayDetailsModal = () => {
         document.querySelector(".details-modal").style.visibility = "visible";
+        document.querySelector(".footer").style.filter = "blur(10px)";
+        document.querySelector(".header").style.filter = "blur(10px)";
+        document.querySelector(".bookshelf").style.filter = "blur(10px)";
     }
 
     const hideDetailsModal = () => {
         document.querySelector(".details-modal").style.visibility = "hidden";
+        document.querySelector(".footer").style.filter = "none";
+        document.querySelector(".header").style.filter = "none";
+        document.querySelector(".bookshelf").style.filter = "none";
     }
 
     const favoriteAddRemove = async (book) => {
@@ -79,7 +85,6 @@ const AllBooksPage = () => {
                 }
             </div>
             <div className="details-modal" onClick={hideDetailsModal}>
-
             </div>
         </div>
     )
