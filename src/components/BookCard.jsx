@@ -2,8 +2,7 @@ import bookmark_inactive from "../assets/images/bookmark.png"
 import bookmark_active from "../assets/images/bookmark_active.png"
 import supabase from "../utils/config";
 
-
-const BookCard = ({book, setBookDetail, fetchData}) => {
+const BookCard = ({ book, showModal, setShowModal, setBookDetail, fetchData }) => {
     const favoriteAddRemove = async (book) => {
         if (book.favorite) {
             const { error } = await supabase
@@ -29,8 +28,8 @@ const BookCard = ({book, setBookDetail, fetchData}) => {
 
     const displayDetailsModal = (book) => {
         setBookDetail(book);
-        document.querySelector(".details-modal").style.visibility = "visible";
-        document.querySelector(".bookshelf-allbooks").style.filter = "blur(10px)";
+        !showModal && setShowModal(!showModal)
+        console.log(showModal);
     };
 
     return (

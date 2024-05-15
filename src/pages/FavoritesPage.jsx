@@ -8,6 +8,7 @@ import DetailsBook from "../components/DetailsBook";
 const FavoritesPage = () => {
     const [arrayFavoriteBooks, setArrayFavoriteBooks] = useState([]);
     const [favBookDetail, setBookDetail] = useState({});
+    const [showFavoriteModal, setShowFavoriteModal] = useState(false);
 
     const fetchDataFavorites = async () => {
         const { data, error } = await supabase
@@ -35,12 +36,12 @@ const FavoritesPage = () => {
                     {
                         arrayFavoriteBooks.map(book => {
                             return (
-                                <BookCard key={book.id} book={book} setBookDetail={setBookDetail} fetchData={fetchDataFavorites} />
+                                <BookCard key={book.id} book={book} showModal={showFavoriteModal} setShowModal={setShowFavoriteModal} setBookDetail={setBookDetail} fetchData={fetchDataFavorites} />
                             )
                         })
                     }
                 </div>
-                <DetailsBook bookDetail={favBookDetail} />
+                {showFavoriteModal && <DetailsBook bookDetail={favBookDetail} showModal={showFavoriteModal} setShowModal={setShowFavoriteModal} />}
             </div>
         )
     } else {

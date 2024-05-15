@@ -4,6 +4,7 @@ import Header from './components/Header.jsx';
 import HomePage from './pages/HomePage.jsx';
 import AllBooksPage from './pages/AllBooksPage.jsx';
 import FavoritesPage from './pages/FavoritesPage.jsx';
+import AddBookPage from './pages/AddBookPage.jsx';
 import './App.css'
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<HomePage />}></Route>
         <Route path="/books" element={<AllBooksPage />}></Route>
         <Route path="/favorites" element={<FavoritesPage />}></Route>
+        <Route path="/addbook" element={<AddBookPage />}></Route>
       </Routes>
       <Footer />
     </>
