@@ -2,7 +2,7 @@ import bookmark_inactive from "../assets/images/bookmark.png"
 import bookmark_active from "../assets/images/bookmark_active.png"
 import supabase from "../utils/config";
 
-const BookCard = ({ book, showModal, setShowModal, setBookDetail, fetchData }) => {
+const BookCard = ({ book, showModalDetails, setShowModalDetails, setBookDetail, fetchData }) => {
     const favoriteAddRemove = async (book) => {
         if (book.favorite) {
             const { error } = await supabase
@@ -28,8 +28,10 @@ const BookCard = ({ book, showModal, setShowModal, setBookDetail, fetchData }) =
 
     const displayDetailsModal = (book) => {
         setBookDetail(book);
-        !showModal && setShowModal(!showModal)
+        !showModalDetails && setShowModalDetails(!showModalDetails)
     };
+
+
 
     return (
         <div className="bookcard">

@@ -1,24 +1,12 @@
+import { useNavigate } from "react-router-dom"
 import logo_books from "../assets/images/logo_books.png"
 import "../styles/pages/HomePage.css"
-import { useState } from 'react';
 
-const HomePage = () => {
-    const [searchWord, setSearchWord] = useState("");
-
-    const handleSarch = (e) => {
-        setSearchWord(e.target.value);
+const HomePage = ({ searchString, handleSearchString }) => {
+    const navigate = useNavigate();
+    const handleSubmit = () => {
+        navigate("/books")
     };
-
-    const handleSubmit = async () => {
-        // const searchWordFormatted = searchWord.replaceAll(" ","+");
-        // try {
-        //     const data = (await axios.get(`${bookApiUrl}${searchWordFormatted}&limit=10000`)).data.docs;
-        //     console.log(data);
-        // } catch (error){
-        //     console.log("Error creating the user: ", error);
-        // }
-    };
-
     return (
         <div className="homepage">
             <div className="homepage-majorcontainer">
@@ -27,11 +15,9 @@ const HomePage = () => {
                 </div>
                 <div className="homepage-majorright">
                     <h1 className="slogan-homepage">Reading, The Ultimate Adventure</h1>
-                    <input className="searchinput" type="text" name="bookSearch" placeholder="Look for a book" onChange={handleSarch} value={searchWord} />
+                    <input onChange={handleSearchString} className="searchinput" type="text" name="bookSearch" placeholder="Look for a title" value={searchString} />
                     <div className="homepage-minor">
-                        <input className="searchinput" type="text" name="genreSearch" placeholder="Genre" />
-                        <input className="searchinput" type="text" name="authorSearch" placeholder="Author" />
-                        <button className="searchButton" onClick={handleSubmit}>Search</button>
+                        <button onClick={handleSubmit} className="searchButton">Search</button>
                     </div>
                 </div>
             </div>

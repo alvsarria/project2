@@ -4,15 +4,10 @@ import BookCard from "../components/BookCard";
 import DetailsBook from "../components/DetailsBook";
 import "../styles/pages/AllBooksPage.css"
 
-const AllBooksPage = () => {
+const AllBooksPage = ({ searchString, handleSearchString }) => {
     const [arrayBooks, setArrayBooks] = useState([]);
     const [bookDetail, setBookDetail] = useState({});
-    const [showModal, setShowModal] = useState(false);
-    const [searchString, setSearchString] = useState("");
-
-    const handleSearchString = (e) => {
-        setSearchString(e.target.value);
-    };
+    const [showModalDetails, setShowModalDetails] = useState(false);
 
     const handleSarch = async () => {
         const { data, error } = await supabase
@@ -31,17 +26,21 @@ const AllBooksPage = () => {
     };
 
     const fetchData = async () => {
-        const { data, error } = await supabase
-            .from("books")
-            .select()
-            .order("id", { ascending: false })
-            .limit(200);
-        if (error) {
-            console.log(error);
-            return
+        if(searchString === ""){
+            const { data, error } = await supabase
+                .from("books")
+                .select()
+                .order("id", { ascending: false })
+                .limit(200);
+            if (error) {
+                console.log(error);
+                return
+            } else {
+                setArrayBooks(data);
+                return
+            }
         } else {
-            setArrayBooks(data);
-            return
+            handleSarch();
         }
     };
 
@@ -49,21 +48,30 @@ const AllBooksPage = () => {
         fetchData();
     }, []);
 
-    return (
-        <div className="allbookspage" >
-            <input onChange={handleSearchString} type="text" name="searchbar" onKeyUp={(e) => e.key === "Enter" && handleSarch()} />
-            <div className="bookshelf-allbooks">
-                {
-                    arrayBooks.map(book => {
-                        return (
-                            <BookCard key={book.id} book={book} showModal={showModal} setShowModal={setShowModal} setBookDetail={setBookDetail} fetchData={fetchData} />
-                        )
-                    })
-                }
+    if (arrayBooks.length !== 0) {
+        return (
+            <div className="allbookspage" >
+                <input onChange={handleSearchString} type="text" name="searchbar" onKeyUp={(e) => e.key === "Enter" && handleSarch()} value={searchString}/>
+                <div className="bookshelf-allbooks">
+                    {
+                        arrayBooks.map(book => {
+                            return (
+                                <BookCard key={book.id} book={book} showModalDetails={showModalDetails} setShowModalDetails={setShowModalDetails} setBookDetail={setBookDetail} fetchData={fetchData} />
+                            )
+                        })
+                    }
+                    {showModalDetails && <DetailsBook bookDetail={bookDetail} showModalDetails={showModalDetails} setShowModalDetails={setShowModalDetails} fetchData={fetchData} />}
+                </div>
             </div>
-            {showModal && <DetailsBook bookDetail={bookDetail} showModal={showModal} setShowModal={setShowModal} fetchData={fetchData} />}
-        </div>
-    )
+        )
+    } else {
+        return (
+            <div className="allbookspage" >
+                <input onChange={handleSearchString} type="text" name="searchbar" onKeyUp={(e) => e.key === "Enter" && handleSarch()} />
+                <p>No Books Found</p>
+            </div>
+        )
+    }
 }
 
 export default AllBooksPage;
