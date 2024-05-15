@@ -6,6 +6,13 @@
     overflow-y: scroll;
 }
 
+.nonebookspage {
+    width: 100vw;
+    background-image: url("../../assets/images/background.jpg");
+    background-size: cover;
+    height: 90vh;
+}
+
 .bookshelf-allbooks {
     padding: 50px 100px 50px 100px;
     /* height: 90vh; */
