@@ -6,7 +6,7 @@
     overflow-y: scroll;
 }
 
-.bookshelf {
+.bookshelf-allbooks {
     padding: 50px 100px 50px 100px;
     /* height: 90vh; */
     display: flex;

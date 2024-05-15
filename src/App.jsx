@@ -1,9 +1,10 @@
+import { Route, Routes } from 'react-router-dom';
 import Footer from './components/Footer.jsx';
 import Header from './components/Header.jsx';
-import './App.css'
 import HomePage from './pages/HomePage.jsx';
 import AllBooksPage from './pages/AllBooksPage.jsx';
-import { Route, Routes } from 'react-router-dom';
+import FavoritesPage from './pages/FavoritesPage.jsx';
+import './App.css'
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
         <Route path="/books" element={<AllBooksPage />}></Route>
+        <Route path="/favorites" element={<FavoritesPage />}></Route>
       </Routes>
       <Footer />
     </>
