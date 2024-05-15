@@ -5,7 +5,5 @@
 }
 
 body {
-  background-color: #fffcfc;
-  background-image: url("./assets/images/background_image.jpg");
-  background-size:cover;
+  background-color: white;
 }

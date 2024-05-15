@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import logo_slogan from "../assets/images/logo_slogan.png"
 import "../styles/components/Header.css"
 
@@ -6,11 +7,11 @@ const Header = () => {
         <div className="header">
              <img className="logo-slogan" src={logo_slogan} alt="logo image" />
              <ul>
-                <li>Home</li>
-                <li>Books</li>
-                <li>Favorites</li>
-                <li>Add Book</li>
-                <li>Shop</li>
+                <Link to="/"><li className="active">Home</li></Link>
+                <Link to="/books"><li>Books</li></Link>
+                <Link to="/favorites"><li>Favorites</li></Link>
+                <Link to="/addbook"><li>Add Book</li></Link>
+                <Link to="/shop"><li>Shop</li></Link>
              </ul>
         </div>
     )

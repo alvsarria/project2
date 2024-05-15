@@ -1,9 +1,6 @@
-import axios from 'axios';
 import logo_books from "../assets/images/logo_books.png"
 import "../styles/pages/HomePage.css"
 import { useState } from 'react';
-
-const bookApiUrl = "https://openlibrary.org/search.json?q=";
 
 const HomePage = () => {
     const [searchWord, setSearchWord] = useState("");
@@ -13,13 +10,13 @@ const HomePage = () => {
     };
 
     const handleSubmit = async () => {
-        const searchWordFormatted = searchWord.replaceAll(" ","+");
-        try {
-            const data = (await axios.get(`${bookApiUrl}${searchWordFormatted}&limit=10000`)).data.docs;
-            console.log(data);
-        } catch (error){
-            console.log("Error creating the user: ", error);
-        }
+        // const searchWordFormatted = searchWord.replaceAll(" ","+");
+        // try {
+        //     const data = (await axios.get(`${bookApiUrl}${searchWordFormatted}&limit=10000`)).data.docs;
+        //     console.log(data);
+        // } catch (error){
+        //     console.log("Error creating the user: ", error);
+        // }
     };
 
     return (
