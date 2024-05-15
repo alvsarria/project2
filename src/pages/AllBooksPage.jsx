@@ -39,7 +39,7 @@ const AllBooksPage = () => {
                     })
                 }
             </div>
-            {showModal && <DetailsBook bookDetail={bookDetail} showModal={showModal} setShowModal={setShowModal} />}
+            {showModal && <DetailsBook bookDetail={bookDetail} showModal={showModal} setShowModal={setShowModal} fetchData={fetchData} />}
         </div>
     )
 }

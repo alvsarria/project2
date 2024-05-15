@@ -1,4 +1,23 @@
-const DetailsBook = ({ bookDetail, showModal, setShowModal }) => {
+import supabase from "../utils/config";
+
+const DetailsBook = ({ bookDetail, showModal, setShowModal, fetchData  }) => {
+    const closeModal = () => {
+        showModal && setShowModal(!showModal)
+    };
+
+    const handleDelete = async (bookDetail) => {
+        console.log(bookDetail.id);
+        const { error } = await supabase
+            .from("books")
+            .delete()
+            .eq("id", bookDetail.id)
+        if (error) {
+            console.log(error);
+        }
+        closeModal();
+        fetchData();
+    };
+
     return (
         <div className="details-modal">
             <img src={bookDetail.image} alt="book detail image" />
@@ -11,7 +30,8 @@ const DetailsBook = ({ bookDetail, showModal, setShowModal }) => {
                 <h5>{bookDetail.date_published}</h5>
                 <h5>{bookDetail.pages}</h5>
                 <p>{bookDetail.synopsis}</p>
-                <button onClick={() => showModal && setShowModal(!showModal)}>Close</button>
+                <button onClick={closeModal}>Close Details</button>
+                <button onClick={() => handleDelete(bookDetail)}>Delete Book</button>
             </div>
         </div>
     )

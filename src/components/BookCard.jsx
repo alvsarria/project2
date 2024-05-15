@@ -29,7 +29,6 @@ const BookCard = ({ book, showModal, setShowModal, setBookDetail, fetchData }) =
     const displayDetailsModal = (book) => {
         setBookDetail(book);
         !showModal && setShowModal(!showModal)
-        console.log(showModal);
     };
 
     return (
