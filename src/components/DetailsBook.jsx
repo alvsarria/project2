@@ -1,9 +1,4 @@
-const DetailsBook = ({bookDetail}) => {
-    const hideDetailsModal = () => {
-        document.querySelector(".details-modal").style.visibility = "hidden";
-        document.querySelector(".bookshelf-allbooks").style.filter = "none";
-    };
-
+const DetailsBook = ({ bookDetail, showModal, setShowModal }) => {
     return (
         <div className="details-modal">
             <img src={bookDetail.image} alt="book detail image" />
@@ -16,7 +11,7 @@ const DetailsBook = ({bookDetail}) => {
                 <h5>{bookDetail.date_published}</h5>
                 <h5>{bookDetail.pages}</h5>
                 <p>{bookDetail.synopsis}</p>
-                <button onClick={hideDetailsModal}>Close</button>
+                <button onClick={() => showModal && setShowModal(!showModal)}>Close</button>
             </div>
         </div>
     )

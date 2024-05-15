@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import "../styles/pages/AllBooksPage.css"
 import supabase from "../utils/config";
-
 import BookCard from "../components/BookCard";
 import DetailsBook from "../components/DetailsBook";
+import "../styles/pages/AllBooksPage.css"
 
 const AllBooksPage = () => {
     const [arrayBooks, setArrayBooks] = useState([]);
     const [bookDetail, setBookDetail] = useState({});
+    const [showModal, setShowModal] = useState(false);
 
     const fetchData = async () => {
         const { data, error } = await supabase
@@ -34,12 +34,12 @@ const AllBooksPage = () => {
                 {
                     arrayBooks.map(book => {
                         return (
-                            <BookCard key={book.id} book={book} setBookDetail={setBookDetail} fetchData={fetchData} />
+                            <BookCard key={book.id} book={book} showModal={showModal} setShowModal={setShowModal} setBookDetail={setBookDetail} fetchData={fetchData} />
                         )
                     })
                 }
             </div>
-            <DetailsBook bookDetail={bookDetail} />
+            {showModal && <DetailsBook bookDetail={bookDetail} showModal={showModal} setShowModal={setShowModal} />}
         </div>
     )
 }

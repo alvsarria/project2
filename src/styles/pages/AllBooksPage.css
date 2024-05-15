@@ -81,7 +81,6 @@
     width: 50vw;
     height: 50vh;
     background-color: white;
-    visibility: hidden;
     display: flex;
 
     img {
