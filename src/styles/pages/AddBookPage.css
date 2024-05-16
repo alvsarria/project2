@@ -10,6 +10,12 @@
     align-items: center;
 }
 
+.errormessage{
+    font-family: 'Inter', sans-serif;
+    color: #ff4343;
+    padding-top: 20px;
+}
+
 .form-addbook{
     display: flex;
     flex-direction: row;
