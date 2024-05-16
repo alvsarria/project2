@@ -9,6 +9,7 @@ const DetailsBook = ({ bookDetail, showModalDetails, setShowModalDetails, handle
     const showUpdateDetails = () => {
         setShowModalUpdate(!showModalUpdate);
         setShowModalDetails(!showModalDetails);
+        console.log(showModalUpdate);
     };
 
     const handleDelete = async (bookDetail) => {
@@ -19,13 +20,11 @@ const DetailsBook = ({ bookDetail, showModalDetails, setShowModalDetails, handle
         if (error) {
             console.log(error);
         }
-        closeModal();
         const url_split = window.location.href.split("/");
+        closeModal();
         url_split[url_split.length - 1] === "books" ? handleSarch() : fetchData();
     };
 
-    // useEffect(() => setBookDetail(bookDetail), [showModalDetails])
-    
     return (
         <div className="details-container">
             <div className="details-modal">
@@ -37,7 +36,7 @@ const DetailsBook = ({ bookDetail, showModalDetails, setShowModalDetails, handle
                 </div>
                 <div className="details-info-container2">
                     <p className="synop"><span>Title: </span>{bookDetail.title}</p>
-                    <p className="synop"><span>Author: </span>{bookDetail.author === undefined ? "Unknown" : (bookDetail.author.length === 0 ? "Unknown" : bookDetail.author[0])}</p>
+                    <p className="synop"><span>Author: </span>{bookDetail.authors === undefined ? "Unknown" : (bookDetail.authors.length === 0 ? "Unknown" : bookDetail.authors[0])}</p>
                     <p className="synop"><span>Subject: </span>{bookDetail.subjects === undefined ? "Unknown" : (bookDetail.subjects.length === 0 ? "Unknown" : bookDetail.subjects[0])}</p>
                     <p className="synop"><span>ISBN13: </span>{bookDetail.isbn13}</p>
                     <p className="synop"><span>Publisher: </span>{bookDetail.publisher}</p>

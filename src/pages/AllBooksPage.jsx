@@ -14,8 +14,10 @@ const AllBooksPage = ({ searchString, handleSearchString }) => {
     const [isLoading, setIsLoading] = useState(false);
 
     const handleSarch = async () => {
-        setIsLoading(false);
-        setTimeout(() => setIsLoading(true), 2000)
+        if (showModalDetails) {
+            setIsLoading(false);
+            setTimeout(() => setIsLoading(true), 1000)
+        }
         if (searchString === "") {
             fetchData();
         } else {
@@ -33,9 +35,9 @@ const AllBooksPage = ({ searchString, handleSearchString }) => {
     };
 
     const fetchData = async () => {
-        if(!showModalUpdate){
+        if (!showModalUpdate) {
             setIsLoading(false);
-            setTimeout(() => setIsLoading(true), 1500)
+            setTimeout(() => setIsLoading(true), 1000)
         }
         if (searchString === "") {
             const { data, error } = await supabase
@@ -98,7 +100,7 @@ const AllBooksPage = ({ searchString, handleSearchString }) => {
                         })
                     }
                     {showModalDetails && <DetailsBook bookDetail={bookDetail} setBookDetail={setBookDetail} showModalDetails={showModalDetails} setShowModalDetails={setShowModalDetails} searchString={searchString} handleSarch={handleSarch} setShowModalUpdate={setShowModalUpdate} showModalUpdate={showModalUpdate} />}
-                    {showModalUpdate && <UpdateBook bookDetail={bookDetail} setBookDetail={setBookDetail} showModalDetails={showModalDetails} setShowModalDetails={setShowModalDetails} setShowModalUpdate={setShowModalUpdate} showModalUpdate={showModalUpdate} fetchData={fetchData}/>}
+                    {showModalUpdate && <UpdateBook bookDetail={bookDetail} setBookDetail={setBookDetail} showModalDetails={showModalDetails} setShowModalDetails={setShowModalDetails} setShowModalUpdate={setShowModalUpdate} showModalUpdate={showModalUpdate} fetchData={fetchData} />}
                 </div>
             </div>
         )

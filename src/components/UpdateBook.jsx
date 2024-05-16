@@ -47,7 +47,6 @@ const UpdateBook = ({ bookDetail, setBookDetail, showModalDetails, setShowModalD
                 setBookDetail(formDataUpdate)
             }
         }
-
         closeUpdate();
         fetchData();
         setShowModalDetails(!showModalDetails);
