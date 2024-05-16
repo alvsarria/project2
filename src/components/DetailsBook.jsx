@@ -1,12 +1,11 @@
 import supabase from "../utils/config";
 
-const DetailsBook = ({ bookDetail, showModalDetails, setShowModalDetails, fetchData }) => {
+const DetailsBook = ({ bookDetail, showModalDetails, setShowModalDetails, handleSarch, fetchData }) => {
     const closeModal = () => {
         showModalDetails && setShowModalDetails(!showModalDetails)
     };
 
     const handleDelete = async (bookDetail) => {
-        console.log(bookDetail.id);
         const { error } = await supabase
             .from("books")
             .delete()
@@ -15,7 +14,8 @@ const DetailsBook = ({ bookDetail, showModalDetails, setShowModalDetails, fetchD
             console.log(error);
         }
         closeModal();
-        fetchData();
+        const url_split = window.location.href.split("/");
+        url_split[url_split.length - 1] === "books" ? handleSarch() : fetchData();
     };
 
     return (

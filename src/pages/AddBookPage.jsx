@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useEffect } from "react";
 import supabase from "../utils/config";
 import "../styles/pages/FavoritesPage.css"
 
@@ -40,6 +41,14 @@ const AddBookPage = () => {
             }
         }
     };
+
+    useEffect(() => {
+        window.scroll({
+            top: 0,
+            left: 0,
+            behavior: "instant",
+        });
+    }, []);
 
     return (
         <div className="addbookspage" >

@@ -27,6 +27,11 @@ const FavoritesPage = () => {
 
     useEffect(() => {
         fetchDataFavorites();
+        window.scroll({
+            top: 0,
+            left: 0,
+            behavior: "instant",
+        });
     }, []);
 
     if (arrayFavoriteBooks.length !== 0) {
@@ -36,12 +41,13 @@ const FavoritesPage = () => {
                     {
                         arrayFavoriteBooks.map(book => {
                             return (
-                                <BookCard key={book.id} book={book} showModal={showFavoriteModal} setShowModal={setShowFavoriteModal} setBookDetail={setBookDetail} fetchData={fetchDataFavorites} />
+                                <BookCard key={book.id} book={book} showModalDetails={showFavoriteModal} setShowModalDetails={setShowFavoriteModal} setBookDetail={setBookDetail} fetchData={fetchDataFavorites} />
                             )
                         })
                     }
                 </div>
-                {showFavoriteModal && <DetailsBook bookDetail={favBookDetail} showModal={showFavoriteModal} setShowModal={setShowFavoriteModal} fetchData={fetchDataFavorites} />}
+                {/* bookDetail, showModalDetails, setShowModalDetails, searchString, handleSarch */}
+                {showFavoriteModal && <DetailsBook bookDetail={favBookDetail} showModalDetails={showFavoriteModal} setShowModalDetails={setShowFavoriteModal} fetchData={fetchDataFavorites} />}
             </div>
         )
     } else {
