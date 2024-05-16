@@ -33,6 +33,7 @@ const FavoritesPage = () => {
     };
 
     useEffect(() => {
+        setTimeout(() => setIsLoading1(true), 1000)
         fetchDataFavorites();
         window.scroll({
             top: 0,
