@@ -3,18 +3,20 @@ import { useEffect } from "react"
 import logo_books from "../assets/images/logo_books.png"
 import "../styles/pages/HomePage.css"
 
-const HomePage = ({ searchString, handleSearchString }) => {
+const HomePage = ({ searchString, handleSearchString, setActivePage }) => {
     const navigate = useNavigate();
     const handleSubmit = () => {
         navigate("/books")
     };
 
     useEffect(() => {
+        setActivePage("home");
         window.scroll({
             top: 0,
             left: 0,
             behavior: "instant",
         });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (

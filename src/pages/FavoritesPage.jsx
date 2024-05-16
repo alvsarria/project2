@@ -6,7 +6,7 @@ import BookCard from "../components/BookCard";
 import DetailsBook from "../components/DetailsBook";
 import Loading from "../components/Loading";
 
-const FavoritesPage = () => {
+const FavoritesPage = ({ setActivePage }) => {
     const [arrayFavoriteBooks, setArrayFavoriteBooks] = useState([]);
     const [favBookDetail, setFavBookDetail] = useState({});
     const [showFavoriteModal, setShowFavoriteModal] = useState(false);
@@ -14,10 +14,8 @@ const FavoritesPage = () => {
     const [isLoading1, setIsLoading1] = useState(false);
 
     const fetchDataFavorites = async () => {
-        if (showFavoriteModal) {
-            setIsLoading1(false);
-            setTimeout(() => setIsLoading1(true), 1000)
-        }
+        setIsLoading1(false);
+        setTimeout(() => setIsLoading1(true), 1000)
         const { data, error } = await supabase
             .from("books")
             .select()
@@ -33,6 +31,7 @@ const FavoritesPage = () => {
     };
 
     useEffect(() => {
+        setActivePage("favorites");
         setTimeout(() => setIsLoading1(true), 1000)
         fetchDataFavorites();
         window.scroll({

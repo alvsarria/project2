@@ -6,7 +6,7 @@ import Loading from "../components/Loading";
 import UpdateBook from "../components/UpdateBook";
 import "../styles/pages/AllBooksPage.css"
 
-const AllBooksPage = ({ searchString, handleSearchString }) => {
+const AllBooksPage = ({ searchString, handleSearchString, setActivePage }) => {
     const [arrayBooks, setArrayBooks] = useState([]);
     const [bookDetail, setBookDetail] = useState({});
     const [showModalDetails, setShowModalDetails] = useState(false);
@@ -14,10 +14,8 @@ const AllBooksPage = ({ searchString, handleSearchString }) => {
     const [isLoading, setIsLoading] = useState(false);
 
     const handleSarch = async () => {
-        if (showModalDetails) {
-            setIsLoading(false);
-            setTimeout(() => setIsLoading(true), 1000)
-        }
+        setIsLoading(false);
+        setTimeout(() => setIsLoading(true), 1000)
         if (searchString === "") {
             fetchData();
         } else {
@@ -35,10 +33,8 @@ const AllBooksPage = ({ searchString, handleSearchString }) => {
     };
 
     const fetchData = async () => {
-        if (!showModalUpdate) {
-            setIsLoading(false);
-            setTimeout(() => setIsLoading(true), 1000)
-        }
+        setIsLoading(false);
+        setTimeout(() => setIsLoading(true), 1000)
         if (searchString === "") {
             const { data, error } = await supabase
                 .from("books")
@@ -58,6 +54,7 @@ const AllBooksPage = ({ searchString, handleSearchString }) => {
     };
 
     useEffect(() => {
+        setActivePage("allbooks");
         setTimeout(() => setIsLoading(true), 1000)
         fetchData();
         window.scroll({

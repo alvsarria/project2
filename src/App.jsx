@@ -10,6 +10,7 @@ import './App.css';
 
 function App() {
   const [searchString, setSearchString] = useState("");
+  const [activePage, setActivePage] = useState("home");
 
   const handleSearchString = (e) => {
     setSearchString(e.target.value);
@@ -17,12 +18,12 @@ function App() {
 
   return (
     <>
-      <Header setSearchString={setSearchString} />
+      <Header activePage={activePage} setSearchString={setSearchString}/>
       <Routes>
-        <Route path="/" element={<HomePage searchString={searchString} setSearchString={setSearchString} handleSearchString={handleSearchString} />}></Route>
-        <Route path="/books" element={<AllBooksPage searchString={searchString} setSearchString={setSearchString} handleSearchString={handleSearchString} />}></Route>
-        <Route path="/favorites" element={<FavoritesPage />}></Route>
-        <Route path="/addbook" element={<AddBookPage />}></Route>
+        <Route path="/" element={<HomePage setActivePage={setActivePage} searchString={searchString} setSearchString={setSearchString} handleSearchString={handleSearchString} />}></Route>
+        <Route path="/books" element={<AllBooksPage setActivePage={setActivePage} searchString={searchString} setSearchString={setSearchString} handleSearchString={handleSearchString} />}></Route>
+        <Route path="/favorites" element={<FavoritesPage setActivePage={setActivePage} />}></Route>
+        <Route path="/addbook" element={<AddBookPage setActivePage={setActivePage} setSearchString={setSearchString}/>}></Route>
       </Routes>
       <Footer />
     </>
