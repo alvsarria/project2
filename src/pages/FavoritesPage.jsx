@@ -52,8 +52,10 @@ const FavoritesPage = () => {
         )
     } else {
         return (
-            <div className="nonebookspage" >
-                <p>No Favorite Books Bookmarked</p>
+            <div className="allbookspage" >
+                <div className="nobooks">
+                    No Favorite Bookmarks
+                </div>
             </div>
         )
     }

@@ -2,14 +2,18 @@ import { useEffect, useState } from "react";
 import supabase from "../utils/config";
 import BookCard from "../components/BookCard";
 import DetailsBook from "../components/DetailsBook";
+import Loading from "../components/Loading";
 import "../styles/pages/AllBooksPage.css"
 
 const AllBooksPage = ({ searchString, handleSearchString }) => {
     const [arrayBooks, setArrayBooks] = useState([]);
     const [bookDetail, setBookDetail] = useState({});
     const [showModalDetails, setShowModalDetails] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleSarch = async () => {
+        setIsLoading(false);
+        setTimeout(() => setIsLoading(true), 2000)
         if (searchString === "") {
             fetchData();
         } else {
@@ -27,6 +31,8 @@ const AllBooksPage = ({ searchString, handleSearchString }) => {
     };
 
     const fetchData = async () => {
+        setIsLoading(false);
+        setTimeout(() => setIsLoading(true), 1500)
         if (searchString === "") {
             const { data, error } = await supabase
                 .from("books")
@@ -46,6 +52,7 @@ const AllBooksPage = ({ searchString, handleSearchString }) => {
     };
 
     useEffect(() => {
+        setTimeout(() => setIsLoading(true), 1000)
         fetchData();
         window.scroll({
             top: 0,
@@ -55,7 +62,21 @@ const AllBooksPage = ({ searchString, handleSearchString }) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    if (arrayBooks.length !== 0) {
+    if (!isLoading) {
+        return (
+            <div className="allbookspage" >
+                <div className="searchbar-container">
+                    <input onChange={handleSearchString} className="searchinput-allpages" type="text" name="bookSearch" placeholder="Look for a title" value={searchString} onKeyUp={(e) => e.key === "Enter" && handleSarch()} />
+                    <div className="homepage-minorr">
+                        <button className="button-allpages" onClick={handleSarch}><span>Search</span><i></i></button>
+                    </div>
+                </div>
+                <div className="nobooks1">
+                    <Loading />
+                </div>
+            </div>
+        )
+    } else if (arrayBooks.length !== 0) {
         return (
             <div className="allbookspage" >
                 <div className="searchbar-container">
@@ -80,7 +101,7 @@ const AllBooksPage = ({ searchString, handleSearchString }) => {
         return (
             <div className="allbookspage" >
                 <div className="searchbar-container">
-                <input onChange={handleSearchString} className="searchinput-allpages" type="text" name="bookSearch" placeholder="Look for a title" value={searchString} onKeyUp={(e) => e.key === "Enter" && handleSarch()} />
+                    <input onChange={handleSearchString} className="searchinput-allpages" type="text" name="bookSearch" placeholder="Look for a title" value={searchString} onKeyUp={(e) => e.key === "Enter" && handleSarch()} />
                     <div className="homepage-minorr">
                         <button className="button-allpages" onClick={handleSarch}><span>Search</span><i></i></button>
                     </div>
