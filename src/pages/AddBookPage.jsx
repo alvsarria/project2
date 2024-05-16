@@ -34,7 +34,6 @@ const AddBookPage = ({ setActivePage, setSearchString }) => {
         const { title, image, synopsis, publisher, subjects, authors, isbn13, date_published, pages } = formData;
         if (title === "" || image === "" || synopsis === "" || publisher === "" || subjects.length === 0 || authors.length === 0 || isbn13 === 0 || date_published === 0 || pages === "") {
             console.log("error");
-            setNewBookModal(true);
         } else {
             const { error } = await supabase
                 .from('books')
