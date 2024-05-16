@@ -11,7 +11,6 @@ const Header = ({ setSearchString }) => {
                 <Link to="/books " onClick={() => setSearchString("")}><li>Books</li></Link>
                 <Link to="/favorites"><li>Favorites</li></Link>
                 <Link to="/addbook"><li>Add Book</li></Link>
-                <Link to="/shop"><li>Shop</li></Link>
             </ul>
         </div>
     )

@@ -23,7 +23,7 @@
     padding-bottom: 20px;
 }
 
-.details-modal {
+.update-modal {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -59,6 +59,7 @@
     padding-right: 25px;
     height: 100%;
     overflow-y: scroll;
+    width: 100%;
 }
 
 .img-details{
@@ -88,4 +89,30 @@
 .button-details:active {
     transition: 0;
     transform: translateY(2.5px);
+}
+
+
+input {
+    font-family: 'Inter', sans-serif;
+    color: #6c6f85;
+    font-size: 16px;
+    height: 32px;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid rgb(203, 203, 203);
+    margin-bottom: 10px;
+}
+
+input:focus {
+    outline: none;
+}
+
+textarea {
+    margin-top: 10px;
+    height: 150px;
+    resize: none;
+    border: 1px solid rgb(203, 203, 203);
+    font-family: 'Inter', sans-serif;
+    color: #6c6f85;
+    font-size: 16px;
 }

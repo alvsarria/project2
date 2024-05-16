@@ -3,12 +3,14 @@ import supabase from "../utils/config";
 import BookCard from "../components/BookCard";
 import DetailsBook from "../components/DetailsBook";
 import Loading from "../components/Loading";
+import UpdateBook from "../components/UpdateBook";
 import "../styles/pages/AllBooksPage.css"
 
 const AllBooksPage = ({ searchString, handleSearchString }) => {
     const [arrayBooks, setArrayBooks] = useState([]);
     const [bookDetail, setBookDetail] = useState({});
     const [showModalDetails, setShowModalDetails] = useState(false);
+    const [showModalUpdate, setShowModalUpdate] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
 
     const handleSarch = async () => {
@@ -93,7 +95,8 @@ const AllBooksPage = ({ searchString, handleSearchString }) => {
                             )
                         })
                     }
-                    {showModalDetails && <DetailsBook bookDetail={bookDetail} showModalDetails={showModalDetails} setShowModalDetails={setShowModalDetails} searchString={searchString} handleSarch={handleSarch} />}
+                    {showModalDetails && <DetailsBook bookDetail={bookDetail} showModalDetails={showModalDetails} setShowModalDetails={setShowModalDetails} searchString={searchString} handleSarch={handleSarch} setShowModalUpdate={setShowModalUpdate} showModalUpdate={showModalUpdate} />}
+                    {showModalUpdate && <UpdateBook bookDetail={bookDetail} showModalDetails={showModalDetails} setShowModalDetails={setShowModalDetails} setShowModalUpdate={setShowModalUpdate} showModalUpdate={showModalUpdate} />}
                 </div>
             </div>
         )
