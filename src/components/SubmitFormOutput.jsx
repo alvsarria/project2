@@ -13,7 +13,7 @@ const SubmitFormOutput = ({ data, setSearchString }) => {
             <div className="details-modal">
                 <div className="details-info-container1">
                     <img className="img-details" src={data.image} alt="book detail image" />
-                    <button className="button-details" onClick={handleClose}>Close Details</button>
+                    <button className="button-details" onClick={handleClose}>Finish</button>
                 </div>
                 <div className="details-info-container2">
                     <h1>Item Created!</h1>
