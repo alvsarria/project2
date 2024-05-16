@@ -31,7 +31,8 @@ const BookCard = ({ book, showModalDetails, setShowModalDetails, setBookDetail, 
         !showModalDetails && setShowModalDetails(!showModalDetails)
     };
 
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // useEffect(() => { setBookDetail(book) }, [arrayBooks])
 
     return (
         <div className="bookcard">

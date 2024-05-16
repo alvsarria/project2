@@ -24,6 +24,8 @@ const DetailsBook = ({ bookDetail, showModalDetails, setShowModalDetails, handle
         url_split[url_split.length - 1] === "books" ? handleSarch() : fetchData();
     };
 
+    // useEffect(() => setBookDetail(bookDetail), [showModalDetails])
+    
     return (
         <div className="details-container">
             <div className="details-modal">

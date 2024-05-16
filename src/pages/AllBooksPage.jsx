@@ -33,8 +33,10 @@ const AllBooksPage = ({ searchString, handleSearchString }) => {
     };
 
     const fetchData = async () => {
-        setIsLoading(false);
-        setTimeout(() => setIsLoading(true), 1500)
+        if(!showModalUpdate){
+            setIsLoading(false);
+            setTimeout(() => setIsLoading(true), 1500)
+        }
         if (searchString === "") {
             const { data, error } = await supabase
                 .from("books")
@@ -91,12 +93,12 @@ const AllBooksPage = ({ searchString, handleSearchString }) => {
                     {
                         arrayBooks.map(book => {
                             return (
-                                <BookCard key={book.id} book={book} showModalDetails={showModalDetails} setShowModalDetails={setShowModalDetails} setBookDetail={setBookDetail} fetchData={fetchData} />
+                                <BookCard key={book.id} book={book} arrayBooks={arrayBooks} showModalDetails={showModalDetails} setShowModalDetails={setShowModalDetails} setBookDetail={setBookDetail} fetchData={fetchData} />
                             )
                         })
                     }
-                    {showModalDetails && <DetailsBook bookDetail={bookDetail} showModalDetails={showModalDetails} setShowModalDetails={setShowModalDetails} searchString={searchString} handleSarch={handleSarch} setShowModalUpdate={setShowModalUpdate} showModalUpdate={showModalUpdate} />}
-                    {showModalUpdate && <UpdateBook bookDetail={bookDetail} showModalDetails={showModalDetails} setShowModalDetails={setShowModalDetails} setShowModalUpdate={setShowModalUpdate} showModalUpdate={showModalUpdate} />}
+                    {showModalDetails && <DetailsBook bookDetail={bookDetail} setBookDetail={setBookDetail} showModalDetails={showModalDetails} setShowModalDetails={setShowModalDetails} searchString={searchString} handleSarch={handleSarch} setShowModalUpdate={setShowModalUpdate} showModalUpdate={showModalUpdate} />}
+                    {showModalUpdate && <UpdateBook bookDetail={bookDetail} setBookDetail={setBookDetail} showModalDetails={showModalDetails} setShowModalDetails={setShowModalDetails} setShowModalUpdate={setShowModalUpdate} showModalUpdate={showModalUpdate} fetchData={fetchData}/>}
                 </div>
             </div>
         )
