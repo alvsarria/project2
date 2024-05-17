@@ -7,6 +7,9 @@ const Header = ({ setSearchString, activePage }) => {
     <div className="header">
       <img className="logo-slogan" src={logo_slogan} alt="logo image" />
       <ul>
+        {/* 
+          The ul here should have li elements as children instead of Link elements.
+        */}
         <Link to="/" onClick={() => setSearchString("")}>
           <li className={activePage === "home" ? "active" : undefined}>Home</li>
         </Link>

@@ -10,6 +10,8 @@ const BookCard = ({
   fetchData,
 }) => {
   const favoriteAddRemove = async (book) => {
+
+    // nice implementation of toggling the favorite status
     if (book.favorite) {
       const { error } = await supabase
         .from("books")

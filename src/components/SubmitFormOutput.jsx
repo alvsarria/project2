@@ -4,7 +4,7 @@ import "../styles/components/DetailsBook.css";
 const SubmitFormOutput = ({ data, setSearchString }) => {
   const navigate = useNavigate();
   const handleClose = () => {
-    navigate("/books");
+    navigate("/books"); // nice implementation of navigation
     setSearchString(data.title);
   };
 
