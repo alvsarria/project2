@@ -62,9 +62,10 @@ const AllBooksPage = ({ searchString, handleSearchString, setActivePage }) => {
       left: 0,
       behavior: "instant",
     });
+    // try to look how to change the configuration of your linter to avoid adding this comment every time
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
+// consider refactoring this component. The amount of props and state variables is high. We'll learn about context API soon, maybe you can use it to manage the state of the modal and the book details. For now you can try to group the props in an object and pass it to the child components
   if (!isLoading) {
     return (
       <div className="allbookspage">

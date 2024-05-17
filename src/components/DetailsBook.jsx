@@ -9,7 +9,7 @@ const DetailsBook = ({
   fetchData,
   setShowModalUpdate,
   showModalUpdate,
-}) => {
+}) => { // when we have this amount of props, we can think of using an object instead. Send an object from the parent component and destructure it here maybe?
   const closeModal = () => {
     setShowModalDetails(!showModalDetails);
   };
@@ -28,11 +28,13 @@ const DetailsBook = ({
     if (error) {
       console.log(error);
     }
+    // I'm not sure if I understand the logic here. Why do we need to split the url and check the last element?
+    // can't we use react-router-dom to add params to the url and then use those params to fetch the data?
     const url_split = window.location.href.split("/");
     closeModal();
     url_split[url_split.length - 1] === "books" ? handleSarch() : fetchData();
   };
-
+// bookDetail can also be destructured before we use it in the return statement
   return (
     <div className="details-container">
       <div className="details-modal">

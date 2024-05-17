@@ -40,6 +40,7 @@ const UpdateBook = ({
 
   const handleSubmitUpdate = async () => {
     console.log(formDataUpdate);
+    // consider refactoring this part. Maybe create a function to check if the form is valid
     const {
       title,
       image,

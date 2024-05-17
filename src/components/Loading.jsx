@@ -1,5 +1,5 @@
 import "../styles/components/Loading.css";
-
+// chapeau for the nice implementation of the loading animation
 const Loading = () => {
   return (
     <div className="book-load">

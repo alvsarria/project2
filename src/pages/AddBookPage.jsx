@@ -4,6 +4,7 @@ import supabase from "../utils/config";
 import "../styles/pages/AddBookPage.css";
 import SubmitFormOutput from "../components/SubmitFormOutput";
 
+// if this variable is outside the component, it will create the same id for all the books. When you add it inside the component, it will create a new id every time the component is rendered
 const formInitialState = {
   id: Math.ceil(Math.random()*1000000),
   title: "",
@@ -33,6 +34,7 @@ const AddBookPage = ({ setActivePage, setSearchString }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // if you create the function to check if the form is valid, you can do it in another file and import it here and in the other component
     const {
       title,
       image,
@@ -71,6 +73,7 @@ const AddBookPage = ({ setActivePage, setSearchString }) => {
 
   useEffect(() => {
     setActivePage("addbook");
+    // the window scroll is a nice touch
     window.scroll({
       top: 0,
       left: 0,
